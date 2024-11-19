@@ -12,7 +12,7 @@ def extract_entities_from_directory(directory_path='./HTMLs'):
     for file_name in os.listdir(directory_path):
         if file_name.endswith('.html'):
             file_path = os.path.join(directory_path, file_name)
-            logging.info(f"Processing file: {file_path}")
+            logging.debug(f"Processing file: {file_path}")  # Changed to DEBUG level
             try:
                 with open(file_path, 'r', encoding='utf-8') as file:
                     soup = BeautifulSoup(file, 'html.parser')
@@ -81,11 +81,11 @@ def main():
         logging.error('No data extracted. Please check the HTML structure or script.')
         return
     else:
-        logging.info(f'Data extracted from HTML files. Total records: {len(data)}")
+        logging.info(f'Data extracted from HTML files. Total records: {len(data)}')
 
     if args.filter != 'all':
         data = filter_data(data, args.filter)
-        logging.info(f'Data filtered by {args.filter} companies. Records after filtering: {len(data)}")
+        logging.info(f'Data filtered by {args.filter} companies. Records after filtering: {len(data)}')
 
     with open(args.output, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, indent=4, ensure_ascii=False)
