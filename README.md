@@ -14,7 +14,15 @@ A Python-based utility for extracting, filtering, and processing data from Linke
 ### Filter by Current or Past Roles
     python3 parser.py -f current -o current_data.json
     python3 parser.py -f past -o past_data.json
-    
+
 ### Extract Unique Company Names
     python3 parser.py -i current_data.json -c companies.txt
 
+### Directory Structure
+    LinkedParser/
+    ├── HTMLs/                # Directory containing LinkedIn HTML files
+    ├── parser.py             # Main script for parsing and processing
+    ├── extracted_data.json
+    ├── current_data.json
+    ├── past_data.json
+    ├── companies.txt
